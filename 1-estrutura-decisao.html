@@ -28,7 +28,7 @@
 <body>
     <main class="container d-flex flex-column align-items-center p-5">
 
-        <h1 class="m-2 text-center">Joãozinho vai ao cinema</h1>
+        <h1 class="m-2 text-center">Montador de tabuadas</h1>
 
         <!-- ENTRADA  -->
         <div class="card m-5">
@@ -36,14 +36,14 @@
                 <!-- insira os campos de formulário aqui -->
                 <form id="entrada">
                     <div class="mb-3">
-                      <label for="filme" class="form-label">Nome do Filme:</label>
-                      <input type="text"
-                        class="form-control" name="filme" id="filme"  placeholder="Digite o nome do filme">
+                        <label for="filme" class="form-label">Nome do Filme:</label>
+                        <input type="text" class="form-control" name="filme" id="filme"
+                            placeholder="Digite o nome do filme">
                     </div>
                     <div class="mb-3">
-                      <label for="classificacao" class="form-label">Digite a faixa etária:</label>
-                      <input type="number"
-                        class="form-control" name="classificacao" id="classificacao"  placeholder="idade">
+                        <label for="classificacao" class="form-label">Digite a faixa etária:</label>
+                        <input type="number" class="form-control" name="classificacao" id="classificacao"
+                            placeholder="idade">
                     </div>
                     <button type="submit" class="btn btn-primary">Processar...</button>
                 </form>
@@ -57,7 +57,10 @@
         <div class="card m-5">
             <div class="card-body">
                 <!-- insira os elementos de saída aqui -->
-                <p id="resposta" class="text-center">Joãozinho pode assitir esse filme?</p>
+                <p id="resposta" class="text-center">
+                    Joãozinho pode assitir esse filme? <br>
+                    <span id="resposta-txt" class="fw-bold fs-1"></span>
+                </p>
             </div>
         </div>
 
@@ -77,15 +80,17 @@
     <script>
         var entrada = document.getElementById('entrada')
 
-        entrada.addEventListener('submit', ()=>{
+        entrada.addEventListener('submit', (evt) => {
             let nomeFilme = document.getElementById('filme').value
             let classificacao = document.getElementById('classificacao').value
 
-            if(classificacao >= 18) {
-                alert('Joãozinho você não pode ver esse filme')    
-            } else{
-                alert('Pode entrar na sessão do filme')
+            if (classificacao >= 18) {
+             document.getElementById('resposta-txt').innerText ='você não pode ver esse filme' 
+            } else {
+                document.getElementById('resposta-txt').innerText='Pode entrar na sessão do filme'
             }
+            //evita a atualização da pagina do evento submit
+            evt.preventDefault()
         })
 
 
